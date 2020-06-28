@@ -1,0 +1,80 @@
+<RegisterationScreen>:
+    BackgroundLayer:
+        id: background
+    MDCard:
+        id: card
+        orientation: "vertical"
+        size_hint: [0.8, 0.8]
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        padding: [15, 0, 15, 20]
+        spacing:15
+        BoxLayout:
+            orientation: "vertical"
+            padding: 10
+
+            MDLabel:
+                text: "VIDIT REGISTRATION"
+                text_size: self.size
+                font_size: 27
+                bold: True
+                halign: "center"
+                valign: "middle"
+                color: utils.get_color_from_hex("#0E2433")
+            MDTextField:
+                id: remail
+                required: True
+                hint_text: "E-Mail ID"
+                line_color_focus: utils.get_color_from_hex("#0E2433")
+            MDTextField:
+                id: rname
+                hint_text: "Full Name"
+                required: True
+                line_color_focus: utils.get_color_from_hex("#0E2433")
+            MDTextField:
+                id: rcontact
+                required: True
+                hint_text: "Contact No."
+                line_color_focus: utils.get_color_from_hex("#0E2433")
+            MDTextField:
+                id: rpassword
+                hint_text: "Password"
+                required: True
+                password: True
+                line_color_focus: utils.get_color_from_hex("#0E2433")
+            MDTextField:
+                id: rcpassword
+                hint_text: "Confirm Password"
+                required: True
+                password: True
+                line_color_focus: utils.get_color_from_hex("#0E2433")
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: 15
+            MDFillRoundFlatButton:
+                text: "          REGISTER  YOUR  ACCOUNT          "
+                pos_hint: {"center_x": 0.5}
+                md_bg_color: utils.get_color_from_hex("#0E2433")
+                on_press:
+                    app.registeruser(remail.text,rname.text,rcontact.text,str(rpassword.text),str(rcpassword.text))
+                    remail.text=''
+                    rname.text=''
+                    rcontact.text=''
+                    rpassword.text=''
+                    rcpassword.text=''
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: 10
+            MDFillRoundFlatButton:
+                text: "      ALREADY  HAVE  AN  ACCOUNT?      "
+                pos_hint: {"center_x": 0.5}
+                md_bg_color: utils.get_color_from_hex("#0E2433")
+                on_press:
+                    remail.text=''
+                    rname.text=''
+                    rcontact.text=''
+                    rpassword.text=''
+                    rcpassword.text=''
+                    root.manager.transition.direction = 'right'
+                    root.manager.current = "screen1"

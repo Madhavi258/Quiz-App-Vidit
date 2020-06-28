@@ -1,0 +1,79 @@
+
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import images_path kivymd.images_path
+#:import colors kivymd.color_definitions.colors
+#:import icon kivymd.icon_definitions.md_icons
+#:import get_color_from_hex kivy.properties
+#:import utils kivy.utils
+
+#:include Screen2.kv
+#:include Screen3.kv
+#:include Screen4.kv
+#:include Screen5.kv
+#:include Screen6.kv
+#:include Screen7.kv
+#:include Screen8.kv
+#:include Screen9.kv
+#:include Screen10.kv
+
+
+<QScreen1>:
+    orientation: "vertical"
+
+    MDToolbar:
+        title: "C Programming Quiz"
+        pos_hint: {'center_x': .5, 'center_y': .95}
+
+        md_bg_color:  utils.get_color_from_hex("#0E2433")
+        background_palette: 'Blue'
+        left_action_items: [["vidit_logo.jpeg", lambda x: x]]
+
+
+    MDToolbar:
+        title: "1. What is the size of long double in ANSI C?"
+        size_hint:(1,.1)
+        pos_hint: {'center_x': .50, 'center_y': .82}
+        md_bg_color: utils.get_color_from_hex("#0E2433")
+#ans a
+    MDRectangleFlatButton:
+        id:q_1_a
+        text: "a. 32bits"
+        size_hint:(.35,.1)
+        text_color: utils.get_color_from_hex("#0E2433")
+        pos_hint: {'center_x':.23,'center_y':.6}
+        orientation: 'vertical'
+        on_press:app.total+=1
+
+    MDRectangleFlatButton:
+        id:q_1_b
+        text: "b. 64bits"
+        size_hint:(.35,.1)
+        text_color: utils.get_color_from_hex("#0E2433")
+        pos_hint: {'center_x':.75,'center_y':.6}
+        orientation: 'vertical'
+
+    MDRectangleFlatButton:
+        id:q_1_c
+        text: "c. 128bits"
+        text_color: utils.get_color_from_hex("#0E2433")
+        pos_hint: {'center_x':.23,'center_y':.4}
+        size_hint:(.35,.1)
+
+    MDRectangleFlatButton:
+        id:q_1_d
+        text: "d. 16bits"
+        text_color:utils.get_color_from_hex("#0E2433")
+        pos_hint: {'center_x':.75,'center_y':.4}
+        size_hint:(.35,.1)
+
+    MDFloatingActionButton:
+        icon: 'arrow-right-bold'
+        #arrow-right-bold-circle": "\uF056"
+        pos_hint: {'center_x': .5, 'center_y': .15}
+        elevation_normal: 8
+        md_bg_color: utils.get_color_from_hex("#0E2433")
+        text_color: utils.get_color_from_hex("#FFFFFF")
+        on_press:
+            root.manager.current = "Qscr2"
+
+

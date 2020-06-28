@@ -1,0 +1,75 @@
+<NavigationItem>
+    theme_text_color: "Custom"
+    on_release: self.parent.set_color_item(self)
+
+    IconLeftWidget:
+        icon: root.icon
+
+<ContentNavigationDrawer>
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        FloatLayout:
+            size_hint_y: None
+            height: "200dp"
+
+            canvas.before:
+                Color:
+                    rgba: utils.get_color_from_hex("#0E2433")
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            BoxLayout:
+                id: top_box
+                size_hint_y: None
+                height: "200dp"
+                #padding: "10dp"
+                x: root.parent.x
+                pos_hint: {"top": 1}
+
+                FitImage:
+                    source: "vidit_logo.jpeg"
+
+            MDIconButton:
+                icon: "close"
+                x: root.parent.x + dp(10)
+                pos_hint: {"top": 1}
+                on_release: root.parent.toggle_nav_drawer()
+
+
+        ScrollView:
+            pos_hint: {"top": 1}
+
+            MDList:
+
+                OneLineListItem:
+                    text: "Home"
+                    on_press:
+                        root.nav_drawer.set_state("close")
+                        root.screen_manager.current = "scr 1"
+
+                OneLineListItem:
+                    text: "View Profile"
+                    on_press:
+                        root.nav_drawer.set_state("close")
+                        root.screen_manager.current = "scr 2"
+
+
+                OneLineListItem:
+                    text: "Feedback"
+                    on_press:
+                        root.nav_drawer.set_state("close")
+                        root.screen_manager.current = "scr 3"
+
+                OneLineListItem:
+                    text: "About Us"
+                    on_press:
+                        root.nav_drawer.set_state("close")
+                        root.screen_manager.current = "scr 4"
+
+                OneLineListItem:
+                    text: "Exit"
+                    on_press:app.root_window.close ()
+

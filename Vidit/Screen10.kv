@@ -1,0 +1,68 @@
+<QScreen10>:
+    orientation: "vertical"
+
+    MDToolbar:
+        title: "C Programming Quiz"
+        pos_hint: {'center_x': .5, 'center_y': .95}
+
+        md_bg_color:  utils.get_color_from_hex("#0E2433")
+        background_palette: 'Blue'
+        left_action_items: [["vidit_logo.jpeg", lambda x: x]]
+
+
+    MDToolbar:
+        title: "10. If you want to store dissimilar data together, then which type you will use?"
+        size_hint:(1,.1)
+        pos_hint: {'center_x': .50, 'center_y': .82}
+        md_bg_color: utils.get_color_from_hex("#0E2433")
+
+#right option a
+
+    MDRectangleFlatButton:
+        id:q_10_a
+        text: "a. Structure"
+        size_hint:(.35,.1)
+        text_color: utils.get_color_from_hex("#0E2433")
+        pos_hint: {'center_x':.23,'center_y':.6}
+        orientation: 'vertical'
+        on_press: app.total+=1
+
+    MDRectangleFlatButton:
+        id:q_10_b
+        text: "b. Array"
+        size_hint:(.35,.1)
+        text_color: utils.get_color_from_hex("#0E2433")
+        pos_hint: {'center_x':.75,'center_y':.6}
+        orientation: 'vertical'
+        on_press:" pass option b"
+
+    MDRectangleFlatButton:
+        id:q_10_c
+        text: "c. Stack"
+        text_color: utils.get_color_from_hex("#0E2433")
+        pos_hint: {'center_x':.23,'center_y':.4}
+        size_hint:(.35,.1)
+        on_press:" pass option c"
+
+    MDRectangleFlatButton:
+        id:q_10_d
+        text: "d. None of above"
+        text_color:utils.get_color_from_hex("#0E2433")
+        pos_hint: {'center_x':.75,'center_y':.4}
+        size_hint:(.35,.1)
+        on_press:" pass option d"
+    MDLabel:
+        id: my_custom_label
+        text: 'Attempt Your Last Question and Click On Submit to View Your Score'
+        text_size: self.size
+        font_size: 27
+        bold: True
+        halign: "center"
+
+        color: utils.get_color_from_hex("#0E2433")
+    MDFillRoundFlatButton:
+        text: "SUBMIT"
+        pos_hint: {"center_x": 0.5,"center_y": 0.2}
+        md_bg_color: utils.get_color_from_hex("#0E2433")
+        on_press:
+            my_custom_label.text= "Score: "+str(app.total)

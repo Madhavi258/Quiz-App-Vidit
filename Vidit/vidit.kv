@@ -1,0 +1,87 @@
+#:import IconLeftWidget kivymd.uix.list.IconLeftWidget
+#:import images_path kivymd.images_path
+#:import get_color_from_hex kivy.properties
+#:import utils kivy.utils
+#:include RegisterationScreen.kv
+#:include Manager.kv
+#:include Menu.kv
+
+
+<LoginScreen>:
+    on_enter:
+        app.animate_background(background)
+        app.animate_card(card)
+    BackgroundLayer:
+        id: background
+    MDCard:
+        id: card
+        orientation: "vertical"
+        size_hint: [0.8, 0.7]
+        pos_hint: {"center_x": 0.5, "center_y": 0}
+        padding: [15, 15, 15, 15]
+        spacing:15
+
+        BoxLayout:
+            orientation: "vertical"
+            padding: 10
+            Image:
+                source: 'vidit.png'
+                weight: 100
+            MDTextField:
+                id: email
+                required: True
+                hint_text: "E-Mail ID"
+                line_color_focus: utils.get_color_from_hex("#0E2433")
+            MDTextField:
+                id: password
+                hint_text: "Password"
+                required: True
+                password: True
+                line_color_focus: utils.get_color_from_hex("#0E2433")
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: 15
+            MDFillRoundFlatButton:
+                text: "LOGIN"
+                size_hint_x: 0.6
+                pos_hint: {"center_x": 0.5}
+                md_bg_color: utils.get_color_from_hex("#0E2433")
+                on_press:
+                    app.checkuser(email.text,str(password.text))
+                    email.text=''
+                    password.text=''
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: 15
+            MDFillRoundFlatButton:
+                text: "REGISTER"
+                size_hint_x: 0.6
+                md_bg_color: utils.get_color_from_hex("#0E2433")
+                pos_hint: {"center_x": 0.5}
+                on_press:
+                    email.text=''
+                    password.text=''
+                    root.manager.transition.direction = 'left'
+                    root.manager.current = "screen2"
+
+
+<BackgroundLayer@BoxLayout>:
+    orientation: "vertical"
+    BoxLayout:
+        id: bx
+        orientation: "vertical"
+        size_hint_y: 0.6
+        canvas.before:
+            Color:
+                rgba: utils.get_color_from_hex("#0E2433")
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [0,0,40,40]
+    BoxLayout:
+        orientation: "horizontal"
+
+

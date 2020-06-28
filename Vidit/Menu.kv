@@ -1,0 +1,189 @@
+#:include ContentNavigationDrawer.kv
+#:include questiondb.kv
+<MenuScreen>:
+    MDToolbar:
+        id:toolbar
+        pos_hint: {"top": 1}
+        title: "Home"
+        md_bg_color: utils.get_color_from_hex("#0E2433")
+        elevation: 10
+        left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
+
+    Widget:
+
+    NavigationLayout:
+        x: toolbar.height
+
+        ScreenManager:
+            id:screen_manager
+
+            Screen:
+                name: "scr 1"
+
+
+                MDCard:
+                    height:root.height * 50 / 100
+                    width: root.width * 100 / 100
+                    size_hint: (.3,.2)
+                    pos_hint: {"center_x": .5, "center_y": .75}
+                    Image:
+                        source:"user.png"
+
+                MDLabel:
+                    text: "Select a Test"
+                    halign: "center"
+                    theme_text_color: "Custom"
+                    text_color: utils.get_color_from_hex("#0E2433")
+                    font_style: "H4"
+                    bold: True
+                    pos_hint: {'center_y': .35}
+
+                MDRoundFlatButton:
+
+                    text: "C Language"
+                    size_hint : (.2, .2)
+                    pos_hint: {'center_x': .2,'center_y':.2}
+                    on_press: root.manager.current= "Qscr1"
+                MDRoundFlatButton:
+                    text: "Data Structure"
+                    pos_hint: {'center_x': .5,'center_y':.2}
+                    size_hint : (.2, .2)
+                MDRoundFlatButton:
+                    text: "DAA"
+                    pos_hint: {'center_x': .8 ,'center_y':.2}
+                    size_hint : (.2, .2)
+
+            Screen:
+                name: "scr 2"
+                MDCard:
+                    height:root.height * 50 / 100
+                    width: root.width * 100 / 100
+                    size_hint: (1,.3)
+                    size: "500dp", "180dp"
+                    pos_hint: {"center_x": .5, "center_y": .75}
+                    Image:
+                        source:"user.png"
+                MDGridLayout:
+                    cols: 1
+                    adaptive_height: True
+                    pos_hint: {"center_x": .5, "center_y": .30}
+                    halign:"center"
+
+                    TwoLineListItem:
+                        id:uname
+                        text: "Name"
+                        secondary_text:str(app.data.name)
+                        halign:"center"
+                    TwoLineListItem:
+                        id:uemail
+                        text: "Email"
+                        secondary_text:str(app.data.email)
+                        halign:"center"
+                    TwoLineListItem:
+                        id:unumber
+                        text: "Mobile No"
+                        secondary_text:str(app.data.number)
+                        halign:"center"
+
+
+
+            Screen:
+                name: "scr 3"
+                size_hint: None, None
+                height: Window.height * 90 / 100
+                width: Window.width * 100 / 100
+
+
+                BoxLayout:
+                    orientation: "vertical"
+                    spacing: "10dp"
+
+                    MDLabel:
+                        text: "Give your Feedback us on:"
+                        halign: "center"
+                        theme_text_color: "Custom"
+                        text_color: utils.get_color_from_hex("#0E2433")
+                        font_style: "H4"
+                        bold: True
+                        size_hint_y: None
+
+
+                    ScrollView:
+                        halign:'center'
+
+                        MDGridLayout:
+                            cols: 1
+                            adaptive_height: True
+                            halign:'center'
+
+                            OneLineAvatarListItem:
+                                text: "developer_vidit@gmail.com"
+                                ImageLeftWidget:
+                                    source: "vidit_logo.jpeg"
+
+
+
+            Screen:
+                name: "scr 4"
+                size_hint: None, None
+                height: Window.height * 90 / 100
+                width: Window.width * 100 / 100
+
+
+                BoxLayout:
+                    orientation: "vertical"
+                    spacing: "10dp"
+
+                    MDLabel:
+                        text: "Developers"
+                        halign: "center"
+                        theme_text_color: "Custom"
+                        text_color: utils.get_color_from_hex("#0E2433")
+                        font_style: "H4"
+                        bold: True
+                        size_hint_y: None
+
+
+                    ScrollView:
+
+                        MDGridLayout:
+                            cols: 1
+                            adaptive_height: True
+
+                            KitchenSinkTwoLineLeftAvatarItem:
+
+                                secondary_text: "17SE02CE001@ppsu.ac.in"
+                                text: "Madhavi Aghera"
+
+                            KitchenSinkTwoLineLeftAvatarItem:
+
+                                secondary_text: "17SE02CE004@ppsu.ac.in"
+                                text: "Druvi Barad"
+
+                            KitchenSinkTwoLineLeftAvatarItem:
+
+                                secondary_text: "17SE02CE005@ppsu.ac.in"
+                                text: "Vrajesh Bhatt"
+
+            Screen:
+                name: "result"
+                MDLabel:
+                    text: "Results"
+                    halign: "center"
+
+
+
+
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            screen_manager: screen_manager
+            nav_drawer: nav_drawer
+
+            ContentNavigationDrawer:
+                id: content_drawer
+                screen_manager: screen_manager
+                nav_drawer: nav_drawer
+
+
+
